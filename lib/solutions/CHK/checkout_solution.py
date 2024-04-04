@@ -76,7 +76,8 @@ def checkout(skus:str)->int:
             return -1
     return full_price
 
-checkout("AAAAAA")
+result = checkout("EE")
+print(result)
 
 
 
