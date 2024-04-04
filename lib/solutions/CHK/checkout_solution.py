@@ -80,9 +80,13 @@ def apply_misc_offer(skus:list[str])->tuple[int, list[str]]:
 
     for item in skus:
         misc_offer.append(item) if item in misc_group else all_else.append(item)
+    
+    # It is in the customer's best interest to discount more expensi
+    # STXS test case returns 62 instead of 65 
+
     groups = len(misc_offer) // group_size
     price = groups * group_price
-    # SSSZ test case returning 65 implies that grouping is done from right to left and remaining elements, if any, will be those at the start
+
     remainder_ind = len(misc_offer) % group_size
     # add remaining elements back into sku pool to be processes as normal
     remainder = misc_offer[0:remainder_ind]
