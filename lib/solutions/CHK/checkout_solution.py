@@ -23,11 +23,14 @@ def checkout(skus:str)->int:
 
     skus = Counter(skus)
     for item in skus:
-        if item in discounts and skus[item]%discounts[item][0]:
-            pass
+        if item in discounts and (skus[item]%discounts[item][0]==0):
+            item_group_count = skus[item] / discounts[item][0]
+            item_price = item_price
+            full_price += item_price
     # scenario where no valid value is entered
     checkout += 0
     return 
+
 
 
 
