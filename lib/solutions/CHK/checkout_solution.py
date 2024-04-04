@@ -47,8 +47,15 @@ def apply_discount(skus:str, full_price:int):
     
     for item in on_offer:
         customer_quantity = skus[item]
-        for offer_quantity in discounts[item]: # keys 5 and 3 for A
-            pass
+        for offer_quantity, offer_price in discounts[item].items(): # {5:200, 3:130} for A
+            groups = customer_quantity // offer_quantity
+            full_price += groups * offer_price
+            remainder = customer_quantity % offer_quantity
+            if remainder == 0:
+                break
+            else:
+                customer_quantity = remainder
+        
         offer_quantity = discounts[item][0]
         to_discount[item] = customer_quantity//offer_quantity
         price_normally[item] = customer_quantity%offer_quantity
@@ -75,3 +82,4 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
