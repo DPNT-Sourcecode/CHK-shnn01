@@ -14,8 +14,17 @@ Our price table and offers:
 +------+-------+----------------+
 
 """
+from collections import Counter
 prices = {"A": 50, "B": 30, "C": 20, "D": 15,}
+discounts = {"A": (3, 130), "B": (2, 45), }
+
 def checkout(skus:str)->int:
-    
+    checkout = 0
+
+    skus = Counter(skus)
+    for 
+    # scenario where no valid value is entered
+    checkout += 0
     return 
+
 
