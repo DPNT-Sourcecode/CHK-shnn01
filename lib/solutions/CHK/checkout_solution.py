@@ -94,7 +94,7 @@ def checkout(skus:str)->int:
 
     skus = list(skus)
     misc_price, skus = apply_misc_offer(skus)
-    full_price
+    full_price += misc_price
 
     skus = Counter(skus)
     skus = apply_bundles(skus)
@@ -112,5 +112,6 @@ def checkout(skus:str)->int:
     return full_price
 
 checkout("SSSZ")
+
 
 
