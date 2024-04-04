@@ -31,6 +31,11 @@ discounts = {"A": (3, 130), "B": (2, 45), }
 
 def apply_bundles(skus:str, full_price:int):
     bundled = {item:skus[item] for item in skus if item in bundles}
+    for item in bundled:
+        bundle_quantity = bundles[item][0] # 2 for E
+        customer_quantity = skus[item]
+        bundles_present = customer_quantity//bundle_quantity
+
     return full_price, updated_skus
 
 def apply_discount(skus:str, full_price:int):
@@ -66,4 +71,5 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
 
