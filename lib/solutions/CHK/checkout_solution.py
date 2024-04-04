@@ -88,3 +88,4 @@ def checkout(skus:str)->int:
             return -1
     return full_price
 
+checkout("FFFF")
