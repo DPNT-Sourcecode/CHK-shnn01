@@ -81,9 +81,10 @@ def apply_misc_offer(skus:list[str])->tuple[int, list[str]]:
     for item in skus:
         misc_offer.append(item) if item in misc_group else all_else.append(item)
     
-    # It is in the customer's best interest to discount more expensi
-    # STXS test case returns 62 instead of 65 
-
+    # It is in the customer's best interest to discount more expensive items so sorting is done to ensure that only the cheapest items remain
+    # for example, STXS test case returns 62 instead of 65. The grouping is done such that X remains.
+    misc_offer = sorted(misc_offer, key=prices.get)
+    
     groups = len(misc_offer) // group_size
     price = groups * group_price
 
@@ -116,3 +117,4 @@ def checkout(skus:str)->int:
     return full_price
 
 checkout("SSSZ")
+
