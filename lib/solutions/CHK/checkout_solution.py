@@ -33,8 +33,9 @@ def checkout(skus:str)->int:
             full_price += skus[item] * prices[item]
         else:
             # scenario where no valid value is entered
-            continue
+            return -1
     return full_price
+
 
 
 
