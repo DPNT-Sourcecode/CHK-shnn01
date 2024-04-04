@@ -35,10 +35,3 @@ def checkout(skus:str)->int:
             # scenario where no valid value is entered
             return -1
     return full_price
-
-
-
-
-
-
-
