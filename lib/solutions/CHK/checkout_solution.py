@@ -19,7 +19,7 @@ prices = {"A": 50, "B": 30, "C": 20, "D": 15,}
 discounts = {"A": (3, 130), "B": (2, 45), }
 
 def checkout(skus:str)->int:
-    checkout = 0
+    full_price = 0
 
     skus = Counter(skus)
     for item in skus:
@@ -30,10 +30,12 @@ def checkout(skus:str)->int:
             item_price = item_group_count * discounts[item][0]
             full_price += item_price
         elif item in prices:
-            full_price += skus[item] prices[item]
-    # scenario where no valid value is entered
-    checkout += 0
-    return 
+            full_price += skus[item] * prices[item]
+        else:
+            # scenario where no valid value is entered
+            continue
+    return full_price
+
 
 
 
