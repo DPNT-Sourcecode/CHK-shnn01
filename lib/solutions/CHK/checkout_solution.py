@@ -36,7 +36,7 @@ Our price table and offers:
 
 """
 from collections import Counter
-prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E":40}
+prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E":40, "F":10}
 bundles = {"E":[2, {"B":1}], "F":[2, {"F":1}]}
 discounts = {"A": {5:200, 3:130}, "B": {2:45}, }
 
@@ -87,3 +87,4 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
