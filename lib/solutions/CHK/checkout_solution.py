@@ -30,29 +30,26 @@ def checkout(skus:str)->int:
 
     skus = Counter(skus)
     on_offer = {item:skus[item] for item in skus if item in discounts}
-    # discounts can be applied on multiples of the item amount specified in offer
-    to_discount = {item:skus[item]/discounts[item][0] for item in on_offer}
-    normal_price = {item:skus[item]%discounts[item][0] for item in on_offer}
+    
+    to_discount = {}
+    normal_price = {}
     discounted = 0
+    
     for item in on_offer:
         offer_quantity = discounts[item][0]
         customer_quantity = skus[item]
         to_discount[item] = customer_quantity//offer_quantity
         normal_price[item] = customer_quantity%offer_quantity
+    
+    # skus are updated to only contain excess quantities that didn't fit in offer
+    skus = skus | normal_price
 
-
-
-    # update main skus list to reflect quanti
-
-    for item in skus:
-
-        if item in discounts and (skus[item]%discounts[item][0]==0):
-            item_group_count = 
-            
-        elif item in prices:
+    for item in skus: 
+        if item in prices:
             full_price += skus[item] * prices[item]
         else:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
 
