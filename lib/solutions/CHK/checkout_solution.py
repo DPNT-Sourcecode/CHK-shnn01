@@ -25,7 +25,7 @@ Our price table and offers:
 
 """
 from collections import Counter
-prices = {"A": 50, "B": 30, "C": 20, "D": 15,}
+prices = {"A": 50, "B": 30, "C": 20, "D": 15, "E":40}
 bundles = {"E":[2, {"B":1}]}
 discounts = {"A": {5:200, 3:130}, "B": {2:45}, }
 
@@ -77,5 +77,6 @@ def checkout(skus:str)->int:
     return full_price
 
 checkout("AAAAAA")
+
 
 
