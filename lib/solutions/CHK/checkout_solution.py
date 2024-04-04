@@ -36,7 +36,8 @@ def apply_bundles(skus:str):
         customer_quantity = skus[item]
         bundles_present = customer_quantity // bundle_quantity
         for bundle_item, bundle_discount in bundles[item][1].items(): # {"B":1} for E
-            skus[bundle_item] -= (bundle_discount * bundles_present) # 1 * number of E pairs
+            if bundle_item in skus:
+                skus[bundle_item] -= (bundle_discount * bundles_present) # 1 * number of E pairs
     return skus
 
 def apply_discount(skus:str, full_price:int):
