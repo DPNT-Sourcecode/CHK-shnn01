@@ -73,13 +73,19 @@ def apply_discount(skus:str, full_price:int):
         price_normally[item] = remainder
     return full_price, price_normally
 
-def apply_misc_offer(skus:list[str])->tuple[int, list[str]]
+def apply_misc_offer(skus:list[str])->tuple[int, list[str]]:
+    group_size, group_price = 3, 45
+    misc_group = 
+    misc_offer, all_else = [], []
+    for item in skus:
+        misc_offer.append(item) if item in list("STXYZ") else all_else.append(item)
+        groups = len(misc_offer/3)
 
 def checkout(skus:str)->int:
     full_price = 0
 
     skus = list(skus)
-    skus = apply_misc_offer(skus)
+    misc_price, skus = apply_misc_offer(skus)
 
     skus = Counter(skus)
     skus = apply_bundles(skus)
