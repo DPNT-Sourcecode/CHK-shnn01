@@ -26,7 +26,7 @@ Our price table and offers:
 """
 from collections import Counter
 prices = {"A": 50, "B": 30, "C": 20, "D": 15,}
-bundles = {"E":(2, "B")}
+bundles = {"E":[2, {"B":1}]}
 discounts = {"A": (3, 130), "B": (2, 45), }
 
 def apply_bundles(skus:str, full_price:int):
@@ -34,7 +34,11 @@ def apply_bundles(skus:str, full_price:int):
     for item in bundled:
         bundle_quantity = bundles[item][0] # 2 for E
         customer_quantity = skus[item]
-        bundles_present = customer_quantity//bundle_quantity
+        bundles_present = customer_quantity // bundle_quantity
+        for bundle_item, bundle_discount in bundles[item][1]: # {"B":1} for E
+            skus[bun]
+
+        
 
     return full_price, updated_skus
 
@@ -71,5 +75,6 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
 
 
