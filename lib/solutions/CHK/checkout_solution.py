@@ -78,6 +78,3 @@ def checkout(skus:str)->int:
 
 result = checkout("EE")
 print(result)
-
-
-
