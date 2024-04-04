@@ -5,4 +5,3 @@
 def checkout(skus:str):
     # find out structure of string
     return skus
-
