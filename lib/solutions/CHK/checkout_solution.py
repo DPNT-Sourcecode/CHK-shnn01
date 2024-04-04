@@ -112,6 +112,3 @@ def checkout(skus:str)->int:
     return full_price
 
 checkout("SSSZ")
-
-
-
