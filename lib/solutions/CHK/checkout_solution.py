@@ -41,8 +41,6 @@ def apply_bundles(skus:str):
 
 def apply_discount(skus:str, full_price:int):
     on_offer = {item:skus[item] for item in skus if item in discounts}
-    
-    to_discount = {}
     price_normally = {}
     
     for item in on_offer:
@@ -56,12 +54,7 @@ def apply_discount(skus:str, full_price:int):
             else:
                 customer_quantity = remainder
         
-        offer_quantity = discounts[item][0]
-        to_discount[item] = customer_quantity//offer_quantity
-        price_normally[item] = customer_quantity%offer_quantity
-
-    for item in to_discount:
-        full_price += to_discount[item] * discounts[item][1]
+        price_normally[item] = remainder
     return full_price, price_normally
 
 
@@ -82,4 +75,5 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
 
