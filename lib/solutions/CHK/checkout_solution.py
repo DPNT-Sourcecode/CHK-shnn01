@@ -28,6 +28,9 @@ from collections import Counter
 prices = {"A": 50, "B": 30, "C": 20, "D": 15,}
 discounts = {"A": (3, 130), "B": (2, 45), }
 
+def apply_discount(skus:str):
+    
+
 def checkout(skus:str)->int:
     full_price = 0
 
@@ -56,6 +59,7 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
 
 
 
