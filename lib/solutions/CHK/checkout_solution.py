@@ -22,9 +22,12 @@ def checkout(skus:str)->int:
     checkout = 0
 
     skus = Counter(skus)
-    for 
+    for item in skus:
+        if item in discounts and skus[item]%discounts[item][0]:
+            pass
     # scenario where no valid value is entered
     checkout += 0
     return 
+
 
 
