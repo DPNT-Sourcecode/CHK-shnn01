@@ -80,10 +80,13 @@ def apply_misc_offer(skus:list[str])->tuple[int, list[str]]:
 
     for item in skus:
         misc_offer.append(item) if item in misc_group else all_else.append(item)
-    groups = len(misc_offer//group_size)
+    groups = len(misc_offer) // group_size
     price = groups * group_price
-    # SSSZ test case returning 65 implies that grouping is done from right to left and remainder is at the start
-    remainder = 
+    # SSSZ test case returning 65 implies that grouping is done from right to left and remaining elements, if any, will be those at the start
+    remainder_ind = len(misc_offer) % group_size
+    # add remaining elements back into sku pool to be processes as normal
+    remainder = misc_offer[0:remainder_ind]
+    all_else.extend(remainder)
     return price, all_else
 
 def checkout(skus:str)->int:
@@ -91,6 +94,7 @@ def checkout(skus:str)->int:
 
     skus = list(skus)
     misc_price, skus = apply_misc_offer(skus)
+    full_price
 
     skus = Counter(skus)
     skus = apply_bundles(skus)
@@ -108,4 +112,5 @@ def checkout(skus:str)->int:
     return full_price
 
 checkout("SSSZ")
+
 
