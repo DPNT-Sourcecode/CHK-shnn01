@@ -62,10 +62,8 @@ def checkout(skus:str)->int:
     full_price = 0
 
     skus = Counter(skus)
-    full_price, skus = apply_bundles(skus)
-    print("applied bundles")
+    skus = apply_bundles(skus)
     full_price, price_normally = apply_discount(skus, full_price)
-    print("applied discount")
     
     # skus are updated to only contain excess quantities that didn't fit in offer
     skus = skus | price_normally
@@ -77,5 +75,7 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
+checkout("AAAAAA")
 
 
