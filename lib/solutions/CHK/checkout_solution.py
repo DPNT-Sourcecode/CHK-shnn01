@@ -33,10 +33,12 @@ def checkout(skus:str)->int:
     # discounts can be applied on multiples of the item amount specified in offer
     to_discount = {item:skus[item]/discounts[item][0] for item in on_offer}
     normal_price = {item:skus[item]%discounts[item][0] for item in on_offer}
-    
+    discounted = 0
     for item in on_offer:
         offer_quantity = discounts[item][0]
-        if skus[item]%discounts[item][0]==0:
+        customer_quantity = skus[item]
+        to_discount[item] = customer_quantity//offer_quantity
+        normal_price[item] = customer_quantity%offer_quantity
 
 
 
@@ -53,3 +55,4 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
