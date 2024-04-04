@@ -75,11 +75,16 @@ def apply_discount(skus:str, full_price:int):
 
 def apply_misc_offer(skus:list[str])->tuple[int, list[str]]:
     group_size, group_price = 3, 45
-    misc_group = 
+    misc_group = list("STXYZ")
     misc_offer, all_else = [], []
+
     for item in skus:
-        misc_offer.append(item) if item in list("STXYZ") else all_else.append(item)
-        groups = len(misc_offer/3)
+        misc_offer.append(item) if item in misc_group else all_else.append(item)
+    groups = len(misc_offer//group_size)
+    price = groups * group_price
+    # SSSZ test case returning 65 implies that grouping is done from right to left and remainder is at the start
+    remainder = 
+    return price, all_else
 
 def checkout(skus:str)->int:
     full_price = 0
@@ -103,3 +108,4 @@ def checkout(skus:str)->int:
     return full_price
 
 checkout("SSSZ")
+
