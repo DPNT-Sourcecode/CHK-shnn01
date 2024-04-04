@@ -13,6 +13,16 @@ Our price table and offers:
 | D    | 15    |                |
 +------+-------+----------------+
 
++------+-------+------------------------+
+| Item | Price | Special offers         |
++------+-------+------------------------+
+| A    | 50    | 3A for 130, 5A for 200 |
+| B    | 30    | 2B for 45              |
+| C    | 20    |                        |
+| D    | 15    |                        |
+| E    | 40    | 2E get one B free      |
++------+-------+------------------------+
+
 """
 from collections import Counter
 prices = {"A": 50, "B": 30, "C": 20, "D": 15,}
@@ -46,6 +56,7 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
 
 
 
