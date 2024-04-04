@@ -34,7 +34,7 @@ def checkout(skus:str)->int:
         normal_price[item] = customer_quantity%offer_quantity
 
     for item in to_discount:
-        full_price += to_discount[item] * discounts[item][0]
+        full_price += to_discount[item] * discounts[item][1]
     
     # skus are updated to only contain excess quantities that didn't fit in offer
     skus = skus | normal_price
@@ -46,6 +46,7 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
 
 
 
