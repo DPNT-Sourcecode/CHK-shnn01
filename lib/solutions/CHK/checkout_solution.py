@@ -29,18 +29,15 @@ prices = {"A": 50, "B": 30, "C": 20, "D": 15,}
 bundles = {"E":[2, {"B":1}]}
 discounts = {"A": (3, 130), "B": (2, 45), }
 
-def apply_bundles(skus:str, full_price:int):
+def apply_bundles(skus:str):
     bundled = {item:skus[item] for item in skus if item in bundles}
     for item in bundled:
         bundle_quantity = bundles[item][0] # 2 for E
         customer_quantity = skus[item]
         bundles_present = customer_quantity // bundle_quantity
         for bundle_item, bundle_discount in bundles[item][1]: # {"B":1} for E
-            skus[bun]
-
-        
-
-    return full_price, updated_skus
+            skus[bundle_item] -= (bundle_discount * bundles_present) # 1 * number of E pairs
+    return skus
 
 def apply_discount(skus:str, full_price:int):
     on_offer = {item:skus[item] for item in skus if item in discounts}
@@ -63,6 +60,7 @@ def checkout(skus:str)->int:
     full_price = 0
 
     skus = Counter(skus)
+    full_price, skus = apply_bundles(skus)
     full_price, price_normally = apply_discount(skus, full_price)
     
     # skus are updated to only contain excess quantities that didn't fit in offer
@@ -75,6 +73,7 @@ def checkout(skus:str)->int:
             # scenario where an invalid value is entered
             return -1
     return full_price
+
 
 
 
